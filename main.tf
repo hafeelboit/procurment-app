@@ -186,7 +186,7 @@ resource "azurerm_linux_virtual_machine" "ansible_control" {
 # ============================================================
 
 resource "azurerm_network_interface" "target" {
-  count = 5
+  count = 2
 
   name                = "nic-ubuntu-${format("%02d", count.index + 1)}"
   location            = azurerm_resource_group.rg.location
@@ -206,7 +206,7 @@ resource "azurerm_network_interface" "target" {
 # ============================================================
 
 resource "azurerm_network_interface_security_group_association" "target_nsg_association" {
-  count = 5
+  count = 2
 
   network_interface_id      = azurerm_network_interface.target[count.index].id
   network_security_group_id = azurerm_network_security_group.target_nsg.id
@@ -217,7 +217,7 @@ resource "azurerm_network_interface_security_group_association" "target_nsg_asso
 # ============================================================
 
 resource "azurerm_linux_virtual_machine" "ubuntu" {
-  count = 5
+  count = 2
 
   name = "ubuntu-vm-${format("%02d", count.index + 1)}"
 

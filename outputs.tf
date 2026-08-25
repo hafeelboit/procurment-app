@@ -17,3 +17,8 @@ output "target_server_private_ips" {
   description = "Private IPs of Ubuntu target servers"
   value       = azurerm_network_interface.target[*].ip_configuration[0].private_ip_address
 }
+
+output "target_server_public_ips" {
+  description = "Public IPs of Ubuntu target servers"
+  value       = azurerm_public_ip.target[*].ip_address
+}
